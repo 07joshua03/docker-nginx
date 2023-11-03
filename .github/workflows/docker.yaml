@@ -2,8 +2,6 @@ name: Docker
 on:
   push:
   workflow_dispatch:
-  schedule:
-  - cron: '54 2 2 * *'
 jobs:
   buildDockerImage:
     name: Build Docker image
@@ -28,7 +26,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        tags: |
-          ghcr.io/wisvch/nginx:latest
-          wisvch/nginx:latest
+        tags: ghcr.io/07joshua03/nginx:latest
         push: ${{ github.ref == 'refs/heads/master' }}
